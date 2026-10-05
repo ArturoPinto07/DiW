@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         body{
+            background-color: wheat;
+            padding: 3%;
+            margin: 0;
+        }
+        div{
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+        form{
+            width: 100%;
+            max-width: 800px;
+            box-sizing: border-box;
+            border-radius: 3%;
+            border: solid;
+            padding: 5%;
+            border-color: white;
+            background-color: rgb(173, 189, 83);
+            font-size: 1.3rem;
+        } 
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        textarea{
+            width: 100%;
+            box-sizing: border-box;
+            font-family: inherit;
+            font-size: 1.4rem;
+            padding: 12px;
+            margin: 8px 0 24px 0;
+        }
+        
+        textarea{
+            display: block;
+            resize: none;
+            overflow: hidden;
+            min-height: 3.2rem;
+        }
+        input[type="submit"]{
+            font-size: 1.5rem;
+            padding: 14px 40px;
+            cursor: pointer;
+        }
+        
+    </style>
+</head>
+<body>
+    <div>
+    <form action="AltaUsuarios.php" method="post">
+        Ingrese el nombre: <br>
+        <input type="text" name="nombre" placeholder="Obligatorio" required><br>
+        Ingrese el 1º apellido: <br>
+        <input type="text" name="apellido1" placeholder="Obligatorio" required><br>
+        Ingrese el 2º apellido: <br>        
+        <input type="text" name="apellido2" placeholder="Opcional"><br>
+        Ingrese el correo:<br>
+        <input type="email" name="email" placeholder="Obligatorio" required><br>
+        Ingrese la contraseña: <br>
+        <input type="password" name="contraseña" placeholder="Obligatorio" required><br>
+        <input type="submit" value="Enviar">
+        <input type="button" value="Iniciar sesión" onclick="window.location.href='Login.html'">
+    </form>
+    </div>
+</body>
+</html>
