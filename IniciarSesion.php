@@ -27,7 +27,7 @@ function volver($conexion, $mensaje) {
 
 // Buscar usuario (los segundos desde el último intento se calculan en MySQL)
 $stmt = $conexion->prepare(
-    "SELECT EMAIL, PASSWORD_CIFRADA, numeroIntentos,
+    "SELECT EMAIL, PASSWORD_CIFRADA, perfil, numeroIntentos,
             TIMESTAMPDIFF(SECOND, hora_login, NOW()) AS segundos
      FROM usuarios2 WHERE EMAIL = ?"
 );
@@ -61,7 +61,7 @@ if (hash_equals($fila['PASSWORD_CIFRADA'], md5($contrasena))) {
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $stmt->close();
-
+    $_SESSION['perfil'] = $fila['perfil'];
     $_SESSION['correo'] = $fila['EMAIL'];
     $conexion->close();
     header("Location: LoginValido.php");
