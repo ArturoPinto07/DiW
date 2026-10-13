@@ -3,7 +3,18 @@ session_start();
 
 const MAX_INTENTOS    = 3;
 const BLOQUEO_SEGUNDOS = 900; // 15 minutos
+const LAT_REF = 36.866301289247865;
+const LON_REF = -6.178468465805054;
+const DISTANCIA_MAX = 50; // metros
 
+function distanciaMetros($lat1, $lon1, $lat2, $lon2) {
+    $R = 6371000;
+    $dLat = deg2rad($lat2 - $lat1);
+    $dLon = deg2rad($lon2 - $lon1);
+    $a = sin($dLat / 2) ** 2 +
+         cos(deg2rad($lat1)) * cos(deg2rad($lat2)) * sin($dLon / 2) ** 2;
+    return $R * 2 * atan2(sqrt($a), sqrt(1 - $a));
+}
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
     header("Location: login.html");
     exit;

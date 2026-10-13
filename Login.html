@@ -38,20 +38,47 @@
             padding: 12px;
             margin: 8px 0 24px 0;
         }
+        a,button{
+            position: absolute;
+            top:70.5%;
+            right: 54.5%;
+            width: 100px;
+        }
     </style>
 </head>
 <body>
     <div>
-    <form action="IniciarSesion.php" method = "post">  
+    <form action="IniciarSesion.php" method="post">
         <h1>Login</h1>
-        <p id="mensaje" style="color:darkred; font-weight:bold;"></p>
+        <p id="estado">Obteniendo ubicación...</p>
+
+        <input type="hidden" name="lat" id="lat">
+        <input type="hidden" name="lon" id="lon">
+
         Ingrese el correo: <br>
         <input type="email" name="correo" required><br>
         Ingrese la contraseña: <br>
-        <input type="password" name="contraseña" required   ><br>
-        <input type="submit" value="Iniciar sesión">
-        
+        <input type="password" name="contraseña" required><br>
+        <input type="submit" id="btn" value="Iniciar sesión" disabled>
     </form>
+    <a href = "Opciones.html"><button>Ir a opciones</button></a>
     </div>
+
+    <script>
+        const estado = document.getElementById("estado");
+
+        navigator.geolocation.getCurrentPosition(
+            function (pos) {
+                document.getElementById("lat").value = pos.coords.latitude;
+                document.getElementById("lon").value = pos.coords.longitude;
+                document.getElementById("btn").disabled = false;
+                estado.textContent = "Ubicación obtenida. Ya puedes iniciar sesión.";
+            },
+            function () {
+                estado.textContent = "Debes permitir el acceso a tu ubicación para iniciar sesión.";
+            },
+            { enableHighAccuracy: true, timeout: 10000 }
+    );
+</script>
 </body>
 </html>

@@ -9,7 +9,7 @@ requerirPerfil(); // cualquier usuario con sesión
     <h1>Bienvenido, <?php echo htmlspecialchars($_SESSION['correo']); ?></h1>
     <p>Perfil: <?php echo htmlspecialchars($_SESSION['perfil']); ?></p>
 
-    <a href="Opciones.php">Opciones</a>
+    <a href="perfilNormal.php">Opciones</a>
 
     <?php if ($_SESSION['perfil'] === 'admin'): ?>
         <br><a href="Admin.php">Panel de administración</a>
