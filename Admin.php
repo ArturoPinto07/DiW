@@ -9,5 +9,6 @@ requerirPerfil("admin");
     <h1>Panel de administración</h1>
     <p>Bienvenido admin</p>
     <a href="LoginValido.php">Volver</a>
+    <a href="completarPerfil.php">Completar Perfil</a>
 </body>
 </html>

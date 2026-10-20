@@ -5,7 +5,7 @@ const MAX_INTENTOS    = 3;
 const BLOQUEO_SEGUNDOS = 900; // 15 minutos
 const LAT_REF = 36.866301289247865;
 const LON_REF = -6.178468465805054;
-const DISTANCIA_MAX = 50; // metros
+const DISTANCIA_MAX = 100; // metros
 
 function distanciaMetros($lat1, $lon1, $lat2, $lon2) {
     $R = 6371000;

@@ -65,20 +65,24 @@
     </div>
 
     <script>
-        const estado = document.getElementById("estado");
+    const estado = document.getElementById("estado");
 
+    if (!navigator.geolocation) {
+        estado.textContent = "Tu navegador no soporta geolocalización.";
+    } else {
         navigator.geolocation.getCurrentPosition(
             function (pos) {
                 document.getElementById("lat").value = pos.coords.latitude;
                 document.getElementById("lon").value = pos.coords.longitude;
                 document.getElementById("btn").disabled = false;
-                estado.textContent = "Ubicación obtenida. Ya puedes iniciar sesión.";
+                estado.textContent = "Ubicación obtenida (precisión: " + Math.round(pos.coords.accuracy) + " m).";
             },
-            function () {
-                estado.textContent = "Debes permitir el acceso a tu ubicación para iniciar sesión.";
+            function (err) {
+                estado.textContent = "Error " + err.code + ": " + err.message;
             },
             { enableHighAccuracy: true, timeout: 10000 }
-    );
+        );
+    }
 </script>
 </body>
 </html>
